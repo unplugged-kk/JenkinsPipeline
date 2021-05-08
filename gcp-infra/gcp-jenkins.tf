@@ -8,14 +8,14 @@ provider "google" {
 #Creation of VPC NW 
 
 resource "google_compute_network" "vpc_network" {
-  name = "jenkins-gcp-infra"
+  name = "automation-infra"
   auto_create_subnetworks = "false"
 }
 
 #Creation of subnet 
 
-resource "google_compute_subnetwork" "jenkins-gcp-infra-subnet" {
-  name          = "jenkins-gcp-subnet1"
+resource "google_compute_subnetwork" "automation-infra-subnet" {
+  name          = "automation-subnet1"
   ip_cidr_range = "10.240.0.0/24"
 
   
@@ -26,8 +26,8 @@ resource "google_compute_subnetwork" "jenkins-gcp-infra-subnet" {
 #Creation of firewall rules
 
 #Internal firewall create
-resource "google_compute_firewall" "jenkins-gcp-fw-int" {
-  name    = "jenkins-gcp-fw-allow-internal"
+resource "google_compute_firewall" "automation-fw-int" {
+  name    = "automation-fw-allow-internal"
   network = google_compute_network.vpc_network.name
 
   allow {
@@ -44,28 +44,28 @@ resource "google_compute_firewall" "jenkins-gcp-fw-int" {
 
 #External firewall create 
 
-resource "google_compute_firewall" "jenkins-gcp-fw-ext" {
-  name    = "jenkins-gcp-fw-allow-external"
+resource "google_compute_firewall" "automation-fw-ext" {
+  name    = "automation-fw-allow-external"
   network = google_compute_network.vpc_network.name
 
   allow {
     protocol = "tcp"
-    ports    = ["22"]
+    ports    = ["22","443","80"]
   }
 
   source_ranges = ["0.0.0.0/0"]
 }
 
-#Creation of jenkins-gcp-infra Nodes
+#Creation of automation-infra Nodes
 
-#jenkins-gcp-master-0
+#automation-master-0
 
 resource "google_compute_instance" "master-0" {
-  name         = "jenkins-gcp-master-0"
+  name         = "automation-master-0"
   machine_type = "e2-standard-4"
   zone         = "us-west1-c"
   can_ip_forward       = true
-  tags = ["jenkins-gcp-infra"]
+  tags = ["automation-infra"]
 
   boot_disk {
     initialize_params {
@@ -84,21 +84,21 @@ resource "google_compute_instance" "master-0" {
 
   network_interface {
     network = google_compute_network.vpc_network.name
-    subnetwork = google_compute_subnetwork.jenkins-gcp-infra-subnet.name
+    subnetwork = google_compute_subnetwork.automation-infra-subnet.name
     network_ip = "10.240.0.10"
     access_config {
     }
   }
 }
 
-#jenkins-gcp-slave-0
+#automation-target-0
 
-resource "google_compute_instance" "slave-0" {
-  name         = "jenkins-gcp-slave-0"
+resource "google_compute_instance" "target-0" {
+  name         = "automation-target-0"
   machine_type = "e2-small"
   zone         = "us-west1-c"
   can_ip_forward       = true
-  tags = ["jenkins-gcp-infra"]
+  tags = ["automation-infra"]
 
   boot_disk {
     initialize_params {
@@ -117,21 +117,21 @@ resource "google_compute_instance" "slave-0" {
 
   network_interface {
     network = google_compute_network.vpc_network.name
-    subnetwork = google_compute_subnetwork.jenkins-gcp-infra-subnet.name
+    subnetwork = google_compute_subnetwork.automation-infra-subnet.name
     network_ip = "10.240.0.11"
     access_config {
     }
   }
 }
 
-#jenkins-gcp-slave-1
+#automation-target-1
 
-resource "google_compute_instance" "slave-1" {
-  name         = "jenkins-gcp-slave-1"
+resource "google_compute_instance" "target-1" {
+  name         = "automation-target-1"
   machine_type = "e2-small"
   zone         = "us-west1-c"
   can_ip_forward       = true
-  tags = ["jenkins-gcp-infra"]
+  tags = ["automation-infra"]
 
   boot_disk {
     initialize_params {
@@ -150,7 +150,7 @@ resource "google_compute_instance" "slave-1" {
 
   network_interface {
     network = google_compute_network.vpc_network.name
-    subnetwork = google_compute_subnetwork.jenkins-gcp-infra-subnet.name
+    subnetwork = google_compute_subnetwork.automation-infra-subnet.name
     network_ip = "10.240.0.12"
     access_config {
     }
