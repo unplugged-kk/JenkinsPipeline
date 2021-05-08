@@ -69,7 +69,7 @@ resource "google_compute_instance" "master-0" {
 
   boot_disk {
     initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
+      image = "centos-cloud/centos-8-v20210420"
       size = 100
     }
   }
@@ -102,7 +102,7 @@ resource "google_compute_instance" "target-0" {
 
   boot_disk {
     initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
+      image = "centos-cloud/centos-8-v20210420"
       size = 50
     }
   }
@@ -135,7 +135,7 @@ resource "google_compute_instance" "target-1" {
 
   boot_disk {
     initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
+      image = "centos-cloud/centos-8-v20210420"
       size = 50
     }
   }
