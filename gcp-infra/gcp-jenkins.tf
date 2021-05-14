@@ -50,7 +50,7 @@ resource "google_compute_firewall" "automation-fw-ext" {
 
   allow {
     protocol = "tcp"
-    ports    = ["22","443","80"]
+    ports    = ["22","443","80","8080","9090"]
   }
 
   source_ranges = ["0.0.0.0/0"]
@@ -69,7 +69,7 @@ resource "google_compute_instance" "master-0" {
 
   boot_disk {
     initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
+      image = "centos-cloud/centos-stream-8-v20210512"
       size = 100
     }
   }
@@ -102,7 +102,7 @@ resource "google_compute_instance" "target-0" {
 
   boot_disk {
     initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
+      image = "centos-cloud/centos-stream-8-v20210512"
       size = 50
     }
   }
@@ -124,37 +124,37 @@ resource "google_compute_instance" "target-0" {
   }
 }
 
-#automation-target-1
+# #automation-target-1
 
-resource "google_compute_instance" "target-1" {
-  name         = "automation-target-1"
-  machine_type = "e2-small"
-  zone         = "us-west1-c"
-  can_ip_forward       = true
-  tags = ["automation-infra"]
+# resource "google_compute_instance" "target-1" {
+#   name         = "automation-target-1"
+#   machine_type = "e2-small"
+#   zone         = "us-west1-c"
+#   can_ip_forward       = true
+#   tags = ["automation-infra"]
 
-  boot_disk {
-    initialize_params {
-      image = "centos-cloud/centos-7-v20200714"
-      size = 50
-    }
-  }
-  scheduling {
-    automatic_restart   = true
-    on_host_maintenance = "MIGRATE"
-  }
+#   boot_disk {
+#     initialize_params {
+#       image = "centos-cloud/centos-7-v20200714"
+#       size = 50
+#     }
+#   }
+#   scheduling {
+#     automatic_restart   = true
+#     on_host_maintenance = "MIGRATE"
+#   }
 
-  metadata = {
-   ssh-keys = "kishore:${file("~/.ssh/id_rsa.pub")}"
- }
+#   metadata = {
+#    ssh-keys = "kishore:${file("~/.ssh/id_rsa.pub")}"
+#  }
 
-  network_interface {
-    network = google_compute_network.vpc_network.name
-    subnetwork = google_compute_subnetwork.automation-infra-subnet.name
-    network_ip = "10.240.0.12"
-    access_config {
-    }
-  }
-}
+#   network_interface {
+#     network = google_compute_network.vpc_network.name
+#     subnetwork = google_compute_subnetwork.automation-infra-subnet.name
+#     network_ip = "10.240.0.12"
+#     access_config {
+#     }
+#   }
+# }
 
 
