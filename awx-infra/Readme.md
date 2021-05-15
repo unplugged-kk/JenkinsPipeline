@@ -1,11 +1,41 @@
+
+#Docker Desktop Download (Downlaod it for MAC,Windows,PC) and install it. Make sure you have Virtualization / INTEL-VT is enabled on your machine .
+
+https://www.docker.com/products/docker-desktop 
+
+Go to Docker Desktop --> Preferences
+
+Docker desktop  settings :
+
+* General section :
+
+Make sure below are checked :
+
+Start Docker Desktop when you log in
+
+Open Docker Desktop dashboard at startup
+
+* Resources (Advanced)
+
+Minimum Configuration should be (CPU=3,Memory=4,Swap=3,Disk=16GB)
+
 #Deploy AWX on Docker-Desktop
 
 #Prerequesite ( configure docker-desktop & k8s with minimum 3 cpu and 4 gb RAM)
 
-Ingress
+In other section dont tick to enable experimental features. 
 
-https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.46.0/deploy/static/provider/cloud/deploy.yaml
+* Kubernetes: 
 
-#Deploy AWX with Operator
+Enable both options in this section
 
-https://raw.githubusercontent.com/ansible/awx-operator/<release>/deploy/awx-operator.yaml
+
+# Ingress docs
+
+https://kubernetes.github.io/ingress-nginx/
+
+# AWX github
+
+https://github.com/ansible/awx
+
+
