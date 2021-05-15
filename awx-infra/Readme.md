@@ -29,6 +29,16 @@ In other section don't tick to enable experimental features.
 
 Enable both options in this section
 
+After executing script use below url to access your ansible awx :
+
+username : admin
+password : it will be prompted after successful execution of the script 
+
+note : ignore trailing % inthe password 
+
+http://localhost:31402/#/login
+
+
 
 # Ingress docs
 
