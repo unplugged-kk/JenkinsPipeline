@@ -1,5 +1,5 @@
 
-#Docker Desktop Download (Downlaod it for MAC,Windows,PC) and install it. Make sure you have Virtualization / INTEL-VT is enabled on your machine .
+#Docker Desktop Download (Download it for MAC,Windows,PC) and install it. Make sure you have Virtualization / INTEL-VT is enabled on your machine .
 
 https://www.docker.com/products/docker-desktop 
 
@@ -21,9 +21,9 @@ Minimum Configuration should be (CPU=3,Memory=4,Swap=3,Disk=16GB)
 
 #Deploy AWX on Docker-Desktop
 
-#Prerequesite ( configure docker-desktop & k8s with minimum 3 cpu and 4 gb RAM)
+#Prerequisite ( configure docker-desktop & k8s with minimum 3 cpu and 4 gb RAM)
 
-In other section dont tick to enable experimental features. 
+In other section don't tick to enable experimental features. 
 
 * Kubernetes: 
 
