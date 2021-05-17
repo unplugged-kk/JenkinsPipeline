@@ -40,12 +40,3 @@ http://localhost:31402/#/login
 
 
 
-# Ingress docs
-
-https://kubernetes.github.io/ingress-nginx/
-
-# AWX github
-
-https://github.com/ansible/awx
-
-
