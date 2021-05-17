@@ -36,7 +36,16 @@ password : it will be prompted after successful execution of the script
 
 note : ignore trailing % inthe password 
 
-http://localhost:31402/#/login
+How to find the url ?
+
+ kubectl get svc |grep awx-service 
+ 
+ awx-service            NodePort    10.96.66.178     <none>        80:30605/TCP        17m
+  
+ here port no is 30605 , replace the port no in the below url.
+
+http://localhost:30605/#/login
+
 
 
 
