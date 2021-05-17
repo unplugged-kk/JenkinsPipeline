@@ -14,19 +14,19 @@ kubectl  apply -f docker-desktop-awx-operator.yaml
 
 kubectl apply -f docker-desktop-custom-config.yml
 
-#check awx-operator pod is ready or not
+#check awx-operator pod is ready or not if the deployment is not up in 10-15 min.
 
-while [[ $(kubectl get pods -l name=awx-operator -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
+# while [[ $(kubectl get pods -l name=awx-operator -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
 
 
 #Check all pods are Ready or not
 
-while [[ $(kubectl get pods -l app.kubernetes.io/name=awx -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
+# while [[ $(kubectl get pods -l app.kubernetes.io/name=awx -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
 
 
 # awx Postgres pod is ready or not
 
-while [[ $(kubectl get pods -l app.kubernetes.io/name=awx-postgres -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
+# while [[ $(kubectl get pods -l app.kubernetes.io/name=awx-postgres -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
 
 
 # Get AWX Admin pass
