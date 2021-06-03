@@ -1,0 +1,12 @@
+gcloud container clusters get-credentials learnk8s-gcp-cluster-prod --zone=europe-west1
+
+gke inmgress:
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.46.0/deploy/static/provider/cloud/deploy.yaml
+
+kubectl apply -f gke-ingress.yaml
+
+
+kubectl config delete-cluster gke_gcp-cert-prep-initial_europe-west1_learnk8s-gcp-cluster-prod
+
+kubectl config delete-context gke_gcp-cert-prep-initial_europe-west1_learnk8s-gcp-cluster-prod
