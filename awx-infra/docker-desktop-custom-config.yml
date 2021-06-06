@@ -4,3 +4,4 @@ metadata:
   name: awx
 spec:
   tower_ingress_type: Ingress
+  
