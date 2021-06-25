@@ -12,7 +12,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "learnk8sResourceGroup"
-  location = "northeurope"
+  location = "westus2"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
@@ -24,7 +24,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   default_node_pool {
     name       = "default"
     node_count = "2"
-    vm_size    = "standard_d2_v2"
+    vm_size    = "standard_a2_v2"
   }
 
   identity {
