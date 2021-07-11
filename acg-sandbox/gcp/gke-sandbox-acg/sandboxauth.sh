@@ -24,5 +24,5 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 gcloud iam service-accounts keys create acgsandbox.json \
         --iam-account=$SA@$PROJECT_ID.iam.gserviceaccount.com
 
-cloudshell download /home/$USER/acgsandbox.json 
+cloudshell download acgsandbox.json 
 
