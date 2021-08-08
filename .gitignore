@@ -8,3 +8,4 @@ terraform.tfstate
 kubeconfig-prod
 *.json
 *.txt
+*kubeconfig-test*
