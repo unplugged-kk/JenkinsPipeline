@@ -1,6 +1,6 @@
 variable "project_id" {
   description = "The project ID to host the cluster in"
-  default     = "sylerdevops1"
+  default     = "sylerdevops2"
 }
 variable "cluster_name" {
   description = "The name for the GKE cluster"

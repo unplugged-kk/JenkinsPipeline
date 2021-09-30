@@ -51,7 +51,7 @@ module "gke" {
   node_pools = [
     {
       name                      = "node-pool"
-      machine_type              = "e2-custom-4-6144"
+      machine_type              = "e2-medium"
       node_locations            = "europe-west1-b,europe-west1-c"
       min_count                 = 1
       max_count                 = 2
@@ -69,7 +69,7 @@ resource "google_compute_firewall" "gke-firewall-ingress" {
   project = var.project_id
   allow {
     protocol = "tcp"
-    ports    = ["8443","443","10254","80","31402","30333","30444"]
+    ports    = ["8443","443","10254","80","31402","30333","30444","3000","9090","9091"]
   }
 
   source_ranges = ["0.0.0.0/0"]
